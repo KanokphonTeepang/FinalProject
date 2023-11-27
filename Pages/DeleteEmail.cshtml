@@ -1,0 +1,30 @@
+﻿@page
+@using Microsoft.Data.SqlClient;
+@{
+    try
+    {
+        String itemid = Request.Query["emailid"];
+
+        String connectionString = "Server=tcp:kanokphonteep.database.windows.net,1433;Initial Catalog=finaldb;Persist Security Info=False;User ID=Kanokphon;Password=cs436_227G;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+            String sql = "DELETE FROM stocks WHERE emailid=@emailid";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@emailid", itemid);
+
+
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+
+    }
+
+    Response.Redirect("Index");
+
+
+}

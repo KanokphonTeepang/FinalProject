@@ -31,12 +31,13 @@ namespace FinalProject.Pages
                     if (User.Identity.Name == null)
                     {
                         username = "";
-                    } else
+                    }
+                    else
                     {
                         username = User.Identity.Name;
                     }
 
-                    String sql = "SELECT * FROM emails WHERE emailreceiver='"+username+"'";
+                    String sql = "SELECT * FROM emails WHERE emailreceiver='" + username + "'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())

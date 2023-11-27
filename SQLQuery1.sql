@@ -1,1 +1,1 @@
-﻿SELECT * FROM emails
+﻿SELECT * FROM emails;
